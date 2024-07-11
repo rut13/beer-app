@@ -1,15 +1,15 @@
 import { Router } from 'express';
 import { getAllBeers, getBeerById, addBeer, rateBeerById, getAllUsers, getUserById, make, login } from './controllers/Controller';
 
-const router = Router();
+var r = Router();
 
-router.get('/beer', getAllBeers);
-router.get('/beer/:id', getBeerById);
-router.post('/beer', addBeer);
-router.post('/beer/rate', rateBeerById);
-router.get('/user', getAllUsers);
-router.get('/user/:id', getUserById);
-router.post('/user', make);
-router.post('/login', login);
+r.get('/beer', getAllBeers);
+r.get('/beer/:id', getBeerById);
+r.post('/beer', addBeer);
+r.post('/beer/rate', rateBeerById);
+r.get('/user', getAllUsers);
+r.get('/user/:id', getUserById);
+r.post('/user', make);
+r.post('/login', login);
 
-export default router;
+export default r;
