@@ -4,8 +4,12 @@
 export const logger = (message) => {
     console.log(`Logger: ${message}`);
   };
+
+export const simpleLogger = (message) => {
+  console.log(`Logger: ${message}`);
+};
   
-  export const errorLogger = (message) => {
-    console.error(`Error: ${message}`);
+  export const errorLogger = (errorMessage) => {
+    console.error(`Error: Something went wrong`);
   };
   

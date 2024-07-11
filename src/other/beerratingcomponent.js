@@ -1,5 +1,5 @@
 import { rateBeer } from './beerService';
 
-export const addRating = (beerId, rating) => {
+export const addRatingToTheBeerSoTheUserKnowsIfItsGoodForNextTime = (beerId, rating) => {
   rateBeer(beerId, rating);
 };

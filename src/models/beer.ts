@@ -1,3 +1,4 @@
+// Add some more properties to the Beer interface
 export interface Beer {
     id: string;
     name: string;

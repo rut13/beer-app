@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { getAllBeers, getBeerById, addBeer, rateBeerById, getAllUsers, getUserById, createUser, login } from './controllers/Controller';
+import { getAllBeers, getBeerById, addBeer, rateBeerById, getAllUsers, getUserById, make, login } from './controllers/Controller';
 
 const router = Router();
 
@@ -9,7 +9,7 @@ router.post('/beer', addBeer);
 router.post('/beer/rate', rateBeerById);
 router.get('/user', getAllUsers);
 router.get('/user/:id', getUserById);
-router.post('/user', createUser);
+router.post('/user', make);
 router.post('/login', login);
 
 export default router;

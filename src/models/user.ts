@@ -5,3 +5,9 @@ export interface User {
     password: string;
   }
   
+export interface User2 {
+    id: string;
+    username: string;
+    email: string;
+    password: string;
+}

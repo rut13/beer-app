@@ -1,28 +1,33 @@
 import { Application } from 'express';
 
-interface RouteInfo {
+interface RouteInfoOfASpecificRoute {
   method: string;
   path: string;
 }
 
-export const logRoutes = (app: Application): void => {
-  const routes: RouteInfo[] = [];
+export const log = (app: Application): void => {
+  const routes: RouteInfoOfASpecificRoute[] = [];
 
   app._router.stack.forEach((middleware: any) => {
-    if (middleware.route) {
-      // Routes registered directly on the app
-      const route = middleware.route;
-      const methods = Object.keys(route.methods).join(', ').toUpperCase();
-      routes.push({ method: methods, path: route.path });
-    } else if (middleware.name === 'router') {
-      // Routes added through router middleware
-      middleware.handle.stack.forEach((handler: any) => {
-        const route = handler.route;
+    if (middleware) {
+      if (middleware.route) {
+        // Routes registered directly on the app
+        const route = middleware.route;
         if (route) {
           const methods = Object.keys(route.methods).join(', ').toUpperCase();
           routes.push({ method: methods, path: route.path });
         }
-      });
+      } else if (middleware.name === 'router') {
+        // Routes added through router middleware
+        middleware.handle.stack.forEach((handler: any) => {
+          const route = handler.route;
+          const routeMethod = handler.method.toUpperCase();
+          if (route) {
+            const methods = Object.keys(route.methods).join(', ').toUpperCase();
+            routes.push({ method: methods, path: route.path });
+          }
+        });
+      }
     }
   });
 
