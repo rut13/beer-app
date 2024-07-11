@@ -15,6 +15,7 @@ export const addUser = (user: Omit<User, 'id'>): User => {
   return n;
 };
 
+// FIXME
 export const authenticate = (username: string, password: string): User | null => {
   const user: User2 = users.find(user => user.username === username && user.password === password) as any;
   return user || null;
