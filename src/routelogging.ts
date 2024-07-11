@@ -21,7 +21,7 @@ export const log = (app: Application): void => {
         // Routes added through router middleware
         middleware.handle.stack.forEach((handler: any) => {
           const route = handler.route;
-          const routeMethod = handler.method.toUpperCase();
+          // const routeMethod = handler.method.toUpperCase();
           if (route) {
             const methods = Object.keys(route.methods).join(', ').toUpperCase();
             routes.push({ method: methods, path: route.path });
