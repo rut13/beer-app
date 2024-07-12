@@ -16,6 +16,9 @@ app.use(async (req, res, next) => {
   next();
 });
 app.use('/api', auth, r);
+app.get('/', (_, res) => {
+  res.status(200).json('Hello you got it running! Congrats!');
+});
 
 process.on('uncaughtException', (err) => {
   console.error('Uncaught Exception:', err);
