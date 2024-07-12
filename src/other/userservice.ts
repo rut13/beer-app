@@ -15,6 +15,14 @@ export const addUser = (user: Omit<User, 'id'>): User => {
   return n;
 };
 
+// can someone please tell me what this is for?
+export const check = (x: any): string => {
+  if (x > 18){
+   return 'nope';
+  }
+   return 'yep'
+};
+
 // FIXME
 export const authenticate = (username: string, password: string): User | null => {
   const user: User2 = users.find(user => user.username === username && user.password === password) as any;
