@@ -17,13 +17,13 @@ export const getBeerById = (req: Request, res: Response) => {
 };
 
 export const ishetaltijdvoorBier = (req: Request, res: Response) => {
-  res.status(404).res.json(ishetaltijdvoorbier());
+  res.status(404).json(ishetaltijdvoorbier());
 };
 
 export const recommendBeers = (req: Request, res: Response) => {
-  const reccomendation: any = recommendBeer(req.params.budget, req.params.type);
+  const reccomendation: any = recommendBeer(+req.params.budget, req.params.type);
   if(reccomendation){
-  res.status(200).res.json(recommendBeer(req.params.budget, req.params.type));  
+  res.status(200).json(recommendBeer(+req.params.budget, req.params.type));  
  } else {
   res.status(404).send({ error: 'no budget or type?' });
  }
