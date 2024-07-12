@@ -38,7 +38,8 @@ export const ishetaltijdvoorbier = (): any => {
   const minuten = nu.getMinutes();
 
   if (dagVanDeWeek === 5 && uren === 16 && minuten === 30) {
-    return 'JAJA TIJD VOOR EEN SPA GOUDJE';
+    return `JAJA TIJD VOOR EEN SPA GOUDJE :) 
+    https://www.youtube.com/watch?v=9Pzj6U5c2cs&pp=ygUJZ2VoYWt0YmFs`;
   } else {
     let dagenTotVrijdag = 5 - dagVanDeWeek;
     if (dagenTotVrijdag < 0 || (dagenTotVrijdag === 0 && (uren > 16 || (uren === 16 && minuten > 30)))) {
