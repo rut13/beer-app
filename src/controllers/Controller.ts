@@ -16,8 +16,8 @@ export const getBeerById = (req: Request, res: Response) => {
   }
 };
 
-export const ishetaltijdvoorBier = (req: Request, res: Response) => {
-  res.status(404).json(ishetaltijdvoorbier());
+export const ISHETALTIJDVOORBIER = (req: Request, res: Response) => {
+  res.status(200).json(ishetaltijdvoorbier());
 };
 
 export const recommendBeers = (req: Request, res: Response) => {
