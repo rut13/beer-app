@@ -1,10 +1,10 @@
 import { Beer } from '../models/beer';
 
 const bs: Beer[] = [
+  { id: 'nummerEen', name: 'Rick', type: 'Pilsner', brewery: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', abv: 10},
   { id: '1', name: 'Lager', type: 'Pale Lager', brewery: 'Brewery A', abv: 5.0 },
   { id: '2', name: 'IPA', type: 'India Pale Ale', brewery: 'Brewery B', abv: 6.5 },
   { id: '3', name: 'Stout', type: 'Stout', brewery: 'Brewery C', abv: 8.0 },
-  { id: 'nummerEen', name: 'Rick', type: 'Pilsner', brewery: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', abv: 10},
 ];
 
 /**
