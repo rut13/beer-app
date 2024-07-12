@@ -10,12 +10,12 @@ const port = 3000;
 
 app.use(express.json());
 // app.use(logger('Request received')); add logging
-app.use('/api', auth, r);
 app.use(async (req, res, next) => {
   logger('Request received');
   await Connector.connect();
   next();
 });
+app.use('/api', auth, r);
 
 process.on('uncaughtException', (err) => {
   console.error('Uncaught Exception:', err);
