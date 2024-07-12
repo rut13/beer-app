@@ -32,5 +32,5 @@ export const log = (app: Application): void => {
   });
 
   console.log('Registered routes:');
-  routes.forEach(route => console.log(`${route.method}: ${route.path}`));
+  routes.forEach(route => console.log(`${route.method}: /api${route.path}`));
 };
