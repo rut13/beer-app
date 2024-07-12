@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
-import { getBeers, getBeer, addNewBeer, rateBeer } from '../other/beer-service';
+import { getBeers, getBeer, addNewBeer, rateBeer, ishetaltijdvoorbier, recommendBeer } from '../other/beer-service';
 import * as rating from '../other/beerratingcomponent.js';
-import { GetUsers, getUser, addUser, authenticate } from '../other/userservice';
+import { GetUsers, getUser, addUser, authenticate, check } from '../other/userservice';
 
 export const getAllBeers = (req: Request, res: Response) => {
   res.json(getBeers());
@@ -15,6 +15,20 @@ export const getBeerById = (req: Request, res: Response) => {
     res.status(404).send({ error: 'Beer not found?' });
   }
 };
+
+export const ishetaltijdvoorBier = (req: Request, res: Response) => {
+  res.status(404).res.json(ishetaltijdvoorbier());
+};
+
+export const recommendBeers = (req: Request, res: Response) => {
+  const reccomendation: any = recommendBeer(req.params.budget, req.params.type);
+  if(reccomendation){
+  res.status(200).res.json(recommendBeer(req.params.budget, req.params.type));  
+ } else {
+  res.status(404).send({ error: 'no budget or type?' });
+ }
+};
+
 
 // Only adds a beer when beer rating is above 3
 export const addBeer = (req: Request, res: Response) => {
@@ -48,6 +62,10 @@ export const getUserById = (req: Request, res: Response) => {
 export const make = (req: Request, res: Response) => {
   const newUser = addUser(req.body);
   res.status(201).json(newUser);
+};
+
+export const checkStuff = (req: Request, res: Response) => {
+  res.status(201).json(check(req.params.number));
 };
 
 // TODO: Update to use better authentication (12-03-2021)

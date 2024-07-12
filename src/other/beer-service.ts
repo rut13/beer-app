@@ -65,3 +65,40 @@ export const rateBeer = (id: string, rating: number): Beer | undefined => {
   const beerToAdd = beer;
   return beerToAdd;
 };
+
+export const recommendBeer = (budget: number, type: string): string => {
+  let result = '';
+  const affordableBeerMap: Map<string, Beer> = new Map();
+
+  for (let i = 0; i < bs.length; i++) {
+      const beer = bs[i];
+      if (beer.rating !== undefined && beer.rating <= budget && beer.type === type) {
+          affordableBeerMap.set(beer.id, beer);
+      }
+    }
+  const affordableBeers = Array.from(affordableBeerMap.values());
+  if (affordableBeers.length === 0) {
+      result = `No ${type} beers found within budget of $${budget}.`;
+  } else {
+      const resultArray: string[] = [];
+      const formatBeerDetails = (beer: Beer): string => {
+          const detailsArray: string[] = [];
+          detailsArray.push(`Name: ${beer.name}`);
+          detailsArray.push(`Type: ${beer.type}`);
+          detailsArray.push(`Brewery: ${beer.brewery}`);
+          detailsArray.push(`ABV: ${beer.abv}%`);
+          if (beer.rating !== undefined) {
+              detailsArray.push(`Rating: ${beer.rating}`);
+          }
+          return detailsArray.join(' | ');
+      };
+      for (let i = 0; i < affordableBeers.length; i++) {
+          const beer = affordableBeers[i];
+          const beerDetails = formatBeerDetails(beer);
+          resultArray.push(beerDetails);
+      }
+      resultArray.sort();
+      result = resultArray.join('\n');
+  }
+  return result;
+};
